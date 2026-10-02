@@ -1,11 +1,20 @@
 /** @type {import('next').NextConfig} */
-const rawApiUrl =
+let rawApiUrl =
   process.env.API_URL ||
   process.env.BACKEND_URL ||
   process.env.NEXT_PUBLIC_API_URL ||
-  (process.env.NODE_ENV === "production"
-    ? "https://mind-ai-gv1f.onrender.com"
-    : "http://localhost:8000");
+  "https://mind-ai-gv1f.onrender.com";
+
+rawApiUrl = rawApiUrl.trim().replace(/^['"]+|['"]+$/g, "");
+
+if (process.env.NODE_ENV === "production" && rawApiUrl.includes("localhost")) {
+  rawApiUrl = "https://mind-ai-gv1f.onrender.com";
+}
+
+if (!rawApiUrl.startsWith("http://") && !rawApiUrl.startsWith("https://")) {
+  rawApiUrl = `https://${rawApiUrl}`;
+}
+
 const apiUrl = rawApiUrl.replace(/\/+$/, "");
 
 const nextConfig = {
