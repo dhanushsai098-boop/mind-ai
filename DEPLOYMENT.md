@@ -1,10 +1,37 @@
-# Mind AI — Production Deployment Guide (Railway All-in-One)
+# Mind AI — Production Deployment Guide
 
-This guide walks you through deploying the complete Mind AI stack (PostgreSQL + FastAPI Backend + Next.js 14 Frontend) on [Railway](https://railway.app).
+This guide covers two recommended deployment setups:
+1. **Option 1 (Vercel + Backend Host)**: Deploy the Next.js frontend to **Vercel** and the FastAPI backend + PostgreSQL to **Railway** or **Render**.
+2. **Option 2 (All-in-One Railway)**: Deploy Frontend, Backend, and PostgreSQL inside a single Railway project.
 
 ---
 
-## 🏗️ Architecture on Railway
+## ⚡ Option 1: Deploying the Frontend on Vercel
+
+Vercel is the creator of Next.js and the premier platform for deploying the frontend.
+
+### Step 1: Import Project to Vercel
+1. Log into your [Vercel Dashboard](https://vercel.com/dashboard).
+2. Click **"Add New..."** ➔ **"Project"**.
+3. Import your GitHub repository: `dhanushsai098-boop/mind-ai`.
+
+### Step 2: Configure Build Settings
+In the Project Configuration screen:
+- **Framework Preset**: `Next.js` (automatically detected)
+- **Root Directory**: Click `Edit` and select **`frontend`** (Important!)
+- Leave Build and Output Settings as default.
+
+### Step 3: Add Environment Variables
+Under **Environment Variables**, add:
+- `NEXT_PUBLIC_API_URL`: The URL of your deployed FastAPI backend (e.g. `https://mind-ai-backend.up.railway.app` or `https://mind-ai-backend.onrender.com`).
+  *(If you haven't deployed the backend yet, you can add this variable after deploying the backend and trigger a redeploy).*
+
+### Step 4: Click Deploy
+Vercel will build and deploy your Next.js frontend to a custom `.vercel.app` domain with global CDN and edge routing!
+
+---
+
+## 🏗️ Option 2: Full Railway Setup (Backend + Postgres + Frontend)
 
 ```
                    ┌──────────────────────────────────────────────┐
