@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 210 20% 98%;
+  --surface: 0 0% 100%;
+  --border: 214 15% 90%;
+  --muted: 210 20% 95%;
+  --muted-foreground: 215 12% 45%;
+  --foreground: 215 25% 12%;
+  --accent: 175 84% 32%;
+  --accent-foreground: 0 0% 100%;
+  --ai: 252 75% 65%;
+  --ai-foreground: 0 0% 100%;
+  --danger: 4 78% 55%;
+}
+
+.dark {
+  --bg: 220 20% 7%;
+  --surface: 220 16% 10%;
+  --border: 220 12% 18%;
+  --muted: 220 14% 14%;
+  --muted-foreground: 216 10% 65%;
+  --foreground: 210 20% 94%;
+  --accent: 174 70% 45%;
+  --accent-foreground: 220 20% 7%;
+  --ai: 252 85% 74%;
+  --ai-foreground: 220 20% 7%;
+  --danger: 4 85% 63%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--bg));
+  color: hsl(var(--foreground));
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ai-glow {
+  background: linear-gradient(135deg, hsl(var(--ai) / 0.15), hsl(var(--accent) / 0.1));
+}
